@@ -1,0 +1,18 @@
+repos:
+-   repo: git://github.com/pre-commit/pre-commit-hooks
+    rev: v2.5.0
+    hooks:
+    -   id: trailing-whitespace
+    -   id: flake8
+    -   id: check-ast
+    -   id: requirements-txt-fixer
+    -   id: check-docstring-first
+-   repo: git://github.com/asottile/reorder_python_imports
+    rev: v2.2.0
+    hooks:
+    -   id: reorder-python-imports
+        language_version: python3.7
+-   repo: git://github.com/pre-commit/mirrors-autopep8
+    rev: v1.5.2
+    hooks:
+    -   id: autopep8
