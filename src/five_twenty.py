@@ -28,3 +28,34 @@ def max_sum_subarray(arr):
         max_thus_far = max(max_ending_here, max_thus_far)
 
     return max_thus_far
+
+
+def spiral_matrix(matrix):
+    left = 0
+    right = len(matrix[0])
+    top = 0
+    bottom = len(matrix)
+    res = []
+
+    while left < right and top < bottom:
+        # go along top
+        for top_idx in range(left, right):
+            res.append(matrix[top][top_idx])
+        top += 1
+
+        # go along right
+        for right_idx in range(top, bottom):
+            res.append(matrix[right_idx][right-1])
+        right -= 1
+
+        # go along bottom
+        for bottom_idx in range(right, left, -1):
+            res.append(matrix[bottom-1][bottom_idx-1])
+        bottom -= 1
+
+        # go along left
+        for left_idx in range(bottom, top, -1):
+            res.append(matrix[left_idx][left])
+        left += 1
+
+    return res
