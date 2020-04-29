@@ -31,30 +31,33 @@ def max_sum_subarray(arr):
 
 
 def spiral_matrix(matrix):
+    """
+    Print a matrix in a clockwise spiral pattern
+    """
     left = 0
-    right = len(matrix[0])
+    right = len(matrix[0]) - 1
     top = 0
-    bottom = len(matrix)
+    bottom = len(matrix) - 1
     res = []
 
     while left < right and top < bottom:
         # go along top
-        for top_idx in range(left, right):
+        for top_idx in range(left, right+1):
             res.append(matrix[top][top_idx])
         top += 1
 
         # go along right
-        for right_idx in range(top, bottom):
-            res.append(matrix[right_idx][right-1])
+        for right_idx in range(top, bottom+1):
+            res.append(matrix[right_idx][right])
         right -= 1
 
         # go along bottom
-        for bottom_idx in range(right, left, -1):
-            res.append(matrix[bottom-1][bottom_idx-1])
+        for bottom_idx in range(right, left-1, -1):
+            res.append(matrix[bottom][bottom_idx])
         bottom -= 1
 
         # go along left
-        for left_idx in range(bottom, top, -1):
+        for left_idx in range(bottom, top-1, -1):
             res.append(matrix[left_idx][left])
         left += 1
 
