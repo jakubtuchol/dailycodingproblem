@@ -45,6 +45,32 @@ def find_missing_integer(arr):
     return left + 1
 
 
+def num_decodings(code):
+    """
+    Given an alphanumeric mapping and an encoded message, count
+    the number of ways it can be decoded
+    """
+    decodings = []
+
+    for idx in range(len(code)):
+        # check one letter before
+        if code[idx] == '0':
+            # zero is special case that maps only to being part of
+            # 10 or 20, so it doesn't have a place in the one-letter
+            # mapping
+            one_letter = 0
+        else:
+            one_letter = decodings[idx-1] if idx > 0 else 1
+        # check two letter code
+        if idx >= 1 and 10 <= int(code[idx-1:idx+1]) <= 26:
+            two_letter = decodings[idx-2] if idx > 1 else 1
+        else:
+            two_letter = 0
+        decodings.append(one_letter + two_letter)
+
+    return decodings[-1]
+
+
 def largest_nonadjacent_sum(arr):
     """
     Find the largest sum of non-adjacent numbers

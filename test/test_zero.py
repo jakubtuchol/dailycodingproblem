@@ -1,5 +1,6 @@
 from src.zero import find_missing_integer
 from src.zero import largest_nonadjacent_sum
+from src.zero import num_decodings
 from src.zero import two_sum
 
 
@@ -37,6 +38,27 @@ class TestFindMissingInteger:
 
     def test_almost_contiguous_case(self):
         assert 3 == find_missing_integer([5, 1, 2])
+
+
+class TestNumDecodings:
+    """
+    Problem #7
+    """
+
+    def test_provided_case(self):
+        assert 3 == num_decodings('111')
+
+    def test_second_triple_case(self):
+        assert 3 == num_decodings('121')
+
+    def test_quadruple_case(self):
+        assert 3 == num_decodings('1234')
+
+    def test_quadruple_multiple_case(self):
+        assert 5 == num_decodings('1224')
+
+    def test_zero_case(self):
+        assert 1 == num_decodings('101')
 
 
 class TestLargestNonadjacentSum:
