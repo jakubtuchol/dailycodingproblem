@@ -1,4 +1,6 @@
 from collections import defaultdict
+from math import pow
+from random import uniform
 from time import sleep
 
 
@@ -89,3 +91,17 @@ def longest_distinct_substring(s, k):
             longest = ''.join(cur)
 
     return longest
+
+
+def estimate_pi(iterations):
+    upper = 2
+    lower = -2
+    in_circle = 0
+
+    for _ in range(iterations):
+        x, y = uniform(lower, upper), uniform(lower, upper)
+        if pow(x, 2) + pow(y, 2) <= 4:
+            in_circle += 1
+
+    # ratio of numbers that fall within circle * 4 should be close to pi
+    return in_circle / iterations * 4

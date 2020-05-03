@@ -1,5 +1,10 @@
+from math import pi
+
+from pytest import mark
+
 from src.ten import autocomplete
 from src.ten import climb_stairs
+from src.ten import estimate_pi
 from src.ten import longest_distinct_substring
 
 
@@ -48,3 +53,13 @@ class TestLongestDistinctSubstring:
         assert 'aabb' == longest_distinct_substring('aabbcc', 2)
         assert 'aabbcc' == longest_distinct_substring('aabbcc', 3)
         assert 'aaabbb' == longest_distinct_substring('aaabbb', 3)
+
+
+@mark.skip(reason='long execution that depends on randomness')
+class TestEstimatePi:
+    """
+    Problem #14
+    """
+
+    def test_thousand_iterations(self):
+        assert abs(pi - estimate_pi(10000000)) < 0.001
