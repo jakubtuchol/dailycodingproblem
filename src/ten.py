@@ -1,3 +1,4 @@
+from collections import defaultdict
 from time import sleep
 
 
@@ -58,3 +59,33 @@ def climb_stairs(k):
         num_ways.append(one_step + two_step)
 
     return num_ways[-1]
+
+
+def longest_distinct_substring(s, k):
+    """
+    Return longest distinct substring with at most `k`
+    characters
+    """
+
+    seen = defaultdict(int)
+    cur = []
+    longest = ''
+
+    for c in s:
+        # add new character to seen and cur
+        seen[c] += 1
+        cur.append(c)
+
+        # if have too many letters, iterate first index of cur and
+        # decrement seen accordingly
+        while len(seen) > k:
+            remove = cur.pop(0)
+            seen[remove] -= 1
+            if not seen[remove]:
+                del seen[remove]
+
+        # compare lengths of cur and longest
+        if len(cur) > len(longest):
+            longest = ''.join(cur)
+
+    return longest

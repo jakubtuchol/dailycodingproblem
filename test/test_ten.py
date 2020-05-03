@@ -1,5 +1,6 @@
 from src.ten import autocomplete
 from src.ten import climb_stairs
+from src.ten import longest_distinct_substring
 
 
 class TestAutocomplete:
@@ -32,3 +33,18 @@ class TestClimbStairs:
 
     def test_two_stairs(self):
         assert 2 == climb_stairs(2)
+
+
+class TestLongestDistinctSubstring:
+    """
+    Problem #13
+    """
+
+    def test_provided_example(self):
+        assert 'bcb' == longest_distinct_substring('abcba', 2)
+
+    def test_iterative(self):
+        assert 'aa' == longest_distinct_substring('aabbcc', 1)
+        assert 'aabb' == longest_distinct_substring('aabbcc', 2)
+        assert 'aabbcc' == longest_distinct_substring('aabbcc', 3)
+        assert 'aaabbb' == longest_distinct_substring('aaabbb', 3)
