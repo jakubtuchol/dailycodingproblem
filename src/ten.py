@@ -139,3 +139,26 @@ class Log:
 
     def get_last(self, idx):
         return self._logs[(self._cur - 1 - idx) % len(self._logs)]
+
+
+def find_longest_path(filesystem):
+    """
+    Given a string representation of a filesystem, find the longest
+    path in that filesystem
+    """
+    cur_path = []
+    max_length = 0
+
+    for node in filesystem.split('\n'):
+        depth = len(node) - len(node.lstrip('\t'))
+        name = node[depth:]
+        while len(cur_path) and cur_path[-1][0] >= depth:
+            cur_path.pop()
+
+        length = cur_path[-1][1] + 1 if cur_path else 0
+        new_length = length + len(name)
+        max_length = max(max_length, new_length)
+
+        cur_path.append((depth, new_length))
+
+    return max_length

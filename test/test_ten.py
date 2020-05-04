@@ -5,6 +5,7 @@ from pytest import mark
 from src.ten import autocomplete
 from src.ten import climb_stairs
 from src.ten import estimate_pi
+from src.ten import find_longest_path
 from src.ten import Log
 from src.ten import longest_distinct_substring
 
@@ -90,3 +91,21 @@ class TestLog:
         assert 'four' == log.get_last(0)
         assert 'three' == log.get_last(1)
         assert 'two' == log.get_last(2)
+
+
+class TestFindLongestPath:
+    """
+    Problem #17
+    """
+
+    def test_provided_example(self):
+        assert 20 == find_longest_path(
+            'dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext'
+        )
+
+    def test_longer_example(self):
+        assert 32 == find_longest_path((
+            'dir\n\tsubdir1\n\t\tfile1.ext\n\t\t'
+            'subsubdir1\n\tsubdir2\n\t\tsubsubdir2'
+            '\n\t\t\tfile2.ext'
+        ))
