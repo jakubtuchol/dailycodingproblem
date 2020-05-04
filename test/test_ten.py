@@ -5,6 +5,7 @@ from pytest import mark
 from src.ten import autocomplete
 from src.ten import climb_stairs
 from src.ten import estimate_pi
+from src.ten import Log
 from src.ten import longest_distinct_substring
 
 
@@ -63,3 +64,29 @@ class TestEstimatePi:
 
     def test_thousand_iterations(self):
         assert abs(pi - estimate_pi(10000000)) < 0.001
+
+
+class TestLog:
+    """
+    Problem #16
+    """
+
+    def test_assert_basic_case(self):
+        log = Log(2)
+        log.record('one')
+        log.record('two')
+        assert 'two' == log.get_last(0)
+        assert 'one' == log.get_last(1)
+
+    def test_wrap_around(self):
+        log = Log(3)
+        log.record('one')
+        log.record('two')
+        log.record('three')
+        assert 'three' == log.get_last(0)
+        assert 'two' == log.get_last(1)
+        assert 'one' == log.get_last(2)
+        log.record('four')
+        assert 'four' == log.get_last(0)
+        assert 'three' == log.get_last(1)
+        assert 'two' == log.get_last(2)

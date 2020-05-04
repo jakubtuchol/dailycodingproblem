@@ -1,5 +1,6 @@
 from collections import defaultdict
 from math import pow
+from random import randint
 from random import uniform
 from time import sleep
 
@@ -94,6 +95,10 @@ def longest_distinct_substring(s, k):
 
 
 def estimate_pi(iterations):
+    """
+    Estimate pi using the monte-carlo method with a specified number
+    of iterations
+    """
     upper = 2
     lower = -2
     in_circle = 0
@@ -105,3 +110,32 @@ def estimate_pi(iterations):
 
     # ratio of numbers that fall within circle * 4 should be close to pi
     return in_circle / iterations * 4
+
+
+def select_stream(stream):
+    """
+    Select a random element from an infinite stream with uniform probability
+    """
+    cur = 0
+    for idx, elt in enumerate(stream):
+        if randint(0, idx) == idx:
+            cur = elt
+    return cur
+
+
+class Log:
+    """
+    Data structure to record at most `n` logs and retrieve i'th log from
+    end in constant time
+    """
+
+    def __init__(self, n):
+        self._logs = [None] * n
+        self._cur = 0
+
+    def record(self, val):
+        self._logs[self._cur] = val
+        self._cur = (self._cur + 1) % len(self._logs)
+
+    def get_last(self, idx):
+        return self._logs[(self._cur - 1 - idx) % len(self._logs)]

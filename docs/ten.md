@@ -26,3 +26,12 @@
     * The area of a circle is defined as πr^2. Estimate π to 3 decimal places using
       a Monte Carlo method.
     * Hint: The basic equation of a circle is x2 + y2 = r2.
+* Problem #15 (Facebook) *DONE*
+    * Given a stream of elements too large to store in memory, pick a random element
+      from the stream with uniform probability.
+* Problem #16 (Twitter) *DONE*
+    * You run a sneaker website and want to record the last N order ids in a log.
+      Implement a data structure to accomplish this, with the following API:
+      * record(order_id): adds the order_id to the log
+      * get_last(i): gets the ith last element from the log. i is guaranteed to
+        be smaller than or equal to N.
