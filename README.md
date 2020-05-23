@@ -20,14 +20,6 @@ Keeping up with the [Daily Coding Problem]()
       goal of minimizing cost while ensuring that no two neighboring houses are of the same color.
     * Given an N by K matrix where the nth row and kth column represents the cost to build the
       nth house with kth color, return the minimum cost which achieves this goal.
-* Problem #22
-    * Given a dictionary of words and a string made up of those words (no spaces), return the original
-      sentence in a list. If there is more than one possible reconstruction, return any of them. If
-      there is no possible reconstruction, then return null.
-    * For example, given the set of words 'quick', 'brown', 'the', 'fox', and the string "thequickbrownfox",
-      you should return ['the', 'quick', 'brown', 'fox'].
-    * Given the set of words 'bed', 'bath', 'bedbath', 'and', 'beyond', and the string "bedbathandbeyond",
-      return either ['bed', 'bath', 'and', 'beyond] or ['bedbath', 'and', 'beyond'].
 * Problem #23
     * You are given an M by N matrix consisting of booleans that represents a board. Each `True` boolean
       represents a wall. Each `False` boolean represents a tile you can walk on.

@@ -47,3 +47,25 @@ def get_min_rooms(lectures):
             end_idx += 1
 
     return num_rooms
+
+
+def construct_sentence(string, words):
+    """
+    Given a dictionary of words an a string with no spaces,
+    find the original sentence in the provided string
+    """
+
+    def _construct_helper(s, seen_words):
+        if not s:
+            return seen_words
+        if s in words:
+            return seen_words + [s]
+
+        for idx in range(len(s)):
+            if s[:idx] in words:
+                res = _construct_helper(s[idx:], seen_words + [s[:idx]])
+                if res:
+                    return res
+        return None
+
+    return _construct_helper(string, [])
