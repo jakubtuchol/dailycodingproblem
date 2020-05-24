@@ -1,6 +1,7 @@
 from src.twenty import construct_sentence
 from src.twenty import find_min_steps
 from src.twenty import get_min_rooms
+from src.twenty import LockableTreeNode
 
 
 class TestGetMinRooms:
@@ -45,3 +46,34 @@ class TestFindMinSteps:
             [False, False, False, False],
         ]
         assert 7 == find_min_steps(maze, (3, 0), (0, 0))
+
+
+class TestLockableTreeNode:
+    """
+    Problem #24
+    """
+
+    def test_balanced_example(self):
+        root = LockableTreeNode(1)
+        root.add_left_child(LockableTreeNode(2))
+        root.add_right_child(LockableTreeNode(3))
+
+        assert root.lock()
+        assert not root.lock()
+        assert root.is_locked()
+        assert not root.left.lock()
+        assert not root.left.is_locked()
+        assert not root.right.lock()
+        assert not root.right.is_locked()
+
+        assert root.unlock()
+        assert not root.is_locked()
+        assert root.left.lock()
+        assert root.left.is_locked()
+        assert root.right.lock()
+        assert root.right.is_locked()
+        assert not root.lock()
+        assert not root.is_locked()
+
+        assert root.right.unlock()
+        assert not root.lock()
