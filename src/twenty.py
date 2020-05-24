@@ -1,3 +1,6 @@
+from collections import deque
+
+
 class ListNode:
     def __init__(self, val):
         self.val = val
@@ -49,23 +52,77 @@ def get_min_rooms(lectures):
     return num_rooms
 
 
-def construct_sentence(string, words):
+def construct_sentence(s, words):
     """
     Given a dictionary of words an a string with no spaces,
     find the original sentence in the provided string
     """
 
-    def _construct_helper(s, seen_words):
-        if not s:
-            return seen_words
-        if s in words:
-            return seen_words + [s]
+    starts = {0: ''}
 
-        for idx in range(len(s)):
-            if s[:idx] in words:
-                res = _construct_helper(s[idx:], seen_words + [s[:idx]])
-                if res:
-                    return res
+    for idx in range(len(s) + 1):
+        new_starts = starts.copy()
+        for start_index in starts.keys():
+            word = s[start_index:idx]
+            if word in words:
+                new_starts[idx] = word
+        starts = new_starts.copy()
+
+    result = []
+    current_length = len(s)
+    if current_length not in starts:
         return None
 
-    return _construct_helper(string, [])
+    while current_length > 0:
+        word = starts[current_length]
+        current_length -= len(word)
+        result.append(word)
+
+    return list(reversed(result))
+
+
+def find_min_steps(board, start, end):
+    """
+    Find the minimum number of steps required to reach the end position
+    index from the start position
+    """
+
+    """
+    min path to given node is min(paths to adjacent nodes)
+    """
+
+    def walkable(board, row, col):
+        # validate row
+        if row < 0 or row >= len(board):
+            return False
+
+        # validate col
+        if col < 0 or col >= len(board[0]):
+            return False
+
+        return not board[row][col]
+
+    def get_walkable_neighbors(board, row, col):
+        return [(r, c) for r, c in
+                [
+                (row, col-1),
+                (row, col+1),
+                (row-1, col),
+                (row+1, col),
+                ] if walkable(board, r, c)
+                ]
+
+    visited = set()
+    to_visit = deque([(start, 0)])
+
+    while to_visit:
+        (row, col), distance = to_visit.popleft()
+        visited.add((row, col))
+
+        for neighbor in get_walkable_neighbors(board, row, col):
+            if neighbor == end:
+                return distance + 1
+            if neighbor not in visited:
+                to_visit.append((neighbor, distance+1))
+
+    return 0

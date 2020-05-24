@@ -1,4 +1,5 @@
 from src.twenty import construct_sentence
+from src.twenty import find_min_steps
 from src.twenty import get_min_rooms
 
 
@@ -29,3 +30,18 @@ class TestConstructSentence:
         expected_two = ['bedbath', 'and', 'beyond']
         res = construct_sentence('bedbathandbeyond', dictionary)
         assert (expected_one == res or expected_two == res)
+
+
+class TestFindMinSteps:
+    """
+    Problem #23
+    """
+
+    def test_provided_example(self):
+        maze = [
+            [False, False, False, False],
+            [True,  True,  False, True],
+            [False, False, False, False],
+            [False, False, False, False],
+        ]
+        assert 7 == find_min_steps(maze, (3, 0), (0, 0))
