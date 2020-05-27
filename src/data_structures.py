@@ -26,3 +26,5 @@ class ListNode:
 
         if len(ls) == 1 and self.next is None:
             return True
+
+        return self.next.compare_to_array(ls[1:])

@@ -20,11 +20,6 @@ Keeping up with the [Daily Coding Problem]()
       goal of minimizing cost while ensuring that no two neighboring houses are of the same color.
     * Given an N by K matrix where the nth row and kth column represents the cost to build the
       nth house with kth color, return the minimum cost which achieves this goal.
-* Problem #26
-    * Given a singly linked list and an integer `k`, remove the kth last element from the list. `k` is guaranteed
-      to be smaller than the length of the list.
-    * The list is very long, so making more than one pass is prohibitively expensive.
-    * Do this in constant space and in one pass.
 * Problem #27
     * Given a string of round, curly, and square open and closing brackets, return whether the brackets are
       balanced (well-formed).

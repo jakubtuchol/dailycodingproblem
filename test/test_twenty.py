@@ -1,8 +1,10 @@
+from src.data_structures import ListNode
 from src.twenty import construct_sentence
 from src.twenty import find_min_steps
 from src.twenty import get_min_rooms
 from src.twenty import LockableTreeNode
 from src.twenty import regex_match
+from src.twenty import remove_kth_from_last
 
 
 class TestGetMinRooms:
@@ -99,3 +101,34 @@ class TestRegexMatch:
 
     def test_splat_match(self):
         assert not regex_match('raymond', '.*')
+
+
+class TestCompareToArray:
+    """
+    Testing utility function
+    """
+
+    def test_simple_case(self):
+        ls = ListNode.from_list(range(11))
+        assert ls.compare_to_array(list(range(11)))
+
+
+class TestRemoveKthFromLast:
+    """
+    Problem #26
+    """
+
+    def test_basic_case(self):
+        root = ListNode.from_list(range(11))
+        remove_kth_from_last(root, 2)
+        assert root.compare_to_array([0, 1, 2, 3, 4, 5, 6, 7, 8, 10])
+
+    def test_zero_case(self):
+        root = ListNode.from_list(range(11))
+        remove_kth_from_last(root, 0)
+        assert root.compare_to_array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+    def test_last_case(self):
+        root = ListNode.from_list(range(11))
+        remove_kth_from_last(root, 1)
+        assert root.compare_to_array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])

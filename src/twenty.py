@@ -234,3 +234,29 @@ def regex_match(word, regex, repeat=None):
         return regex_match(word[1:], regex[2:], repeat=regex[0])
 
     return regex_match(word[1:], regex[1:])
+
+
+def remove_kth_from_last(ls, k):
+    """
+    Remove the kth from last element from a singly-linked list
+    """
+
+    runner = ls
+    while k > 0:
+        runner = runner.next
+        k -= 1
+
+    cur = ls
+    prev = None
+
+    # iterate until runner runs out
+    while runner:
+        prev = cur
+        cur = cur.next
+        runner = runner.next
+
+    # remove element from list
+    if cur:
+        prev.next = cur.next
+    else:
+        prev.next = None
