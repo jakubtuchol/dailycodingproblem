@@ -2,6 +2,7 @@ from src.twenty import construct_sentence
 from src.twenty import find_min_steps
 from src.twenty import get_min_rooms
 from src.twenty import LockableTreeNode
+from src.twenty import regex_match
 
 
 class TestGetMinRooms:
@@ -77,3 +78,24 @@ class TestLockableTreeNode:
 
         assert root.right.unlock()
         assert not root.lock()
+
+
+class TestRegexMatch:
+    """
+    Problem #25
+    """
+
+    def test_simple_case(self):
+        assert regex_match('ray', 'ra.')
+
+    def test_simple_false_case(self):
+        assert not regex_match('raymond', 'ra.')
+
+    def test_combined_true_case(self):
+        assert regex_match('chat', '.*at')
+
+    def test_combined_false_case(self):
+        assert not regex_match('chats', '*.at')
+
+    def test_splat_match(self):
+        assert not regex_match('raymond', '.*')

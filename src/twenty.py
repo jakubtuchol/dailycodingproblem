@@ -107,16 +107,6 @@ class LockableTreeNode:
     only if all descendants or ancestors are not locked
     """
 
-    '''
-    need parent pointer to traverse tree up
-    lock ->
-        traverse tree up until find node with no parent
-        check if parent is locked at each point
-        if left_subtree and right_subtree not locked, then can lock
-        traverse up and lock corresponding subtree
-
-    '''
-
     def __init__(self, value):
         # node-specific info
         self.val = value
@@ -209,3 +199,38 @@ class LockableTreeNode:
         self.locked = False
 
         return True
+
+
+def regex_match(word, regex, repeat=None):
+    """
+    Given that '.' corresponds to any character, and '*'
+    corresponds to 0 or more matches of the previous character,
+    write a function that checks if the pattern matches the input.
+    """
+    if not word and not regex:
+        return True
+
+    if not word:
+        if len(regex) == 2 and regex[-1]:
+            return True
+        return False
+
+    if not regex:
+        return False
+
+    # check case where repeat expected
+    if repeat:
+        if word[0] == repeat or repeat == '.':
+            return regex_match(
+                word[1:], regex, repeat=repeat
+            ) or regex_match(word, regex)
+
+    has_repeat = len(regex) > 1 and regex[1] == '*'
+
+    if regex[0] != '.' and regex[0] != word[0]:
+        return False
+
+    if has_repeat:
+        return regex_match(word[1:], regex[2:], repeat=regex[0])
+
+    return regex_match(word[1:], regex[1:])
