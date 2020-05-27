@@ -3,6 +3,7 @@ from src.twenty import check_balanced_parens
 from src.twenty import construct_sentence
 from src.twenty import find_min_steps
 from src.twenty import get_min_rooms
+from src.twenty import justify_text
 from src.twenty import LockableTreeNode
 from src.twenty import regex_match
 from src.twenty import remove_kth_from_last
@@ -149,3 +150,22 @@ class TestCheckBalancedParens:
 
     def test_edge_case(self):
         assert not check_balanced_parens(')(')
+
+
+class TestJustifyText:
+    """
+    Problem #28
+    """
+
+    def test_fox_example(self):
+        words = [
+            'the', 'quick', 'brown',
+            'fox', 'jumps', 'over',
+            'the', 'lazy', 'dog'
+        ]
+        expected = [
+            'the  quick brown',
+            'fox  jumps  over',
+            'the   lazy   dog',
+        ]
+        assert expected == justify_text(words, 16)

@@ -285,3 +285,50 @@ def check_balanced_parens(parens):
             ls.append(paren)
 
     return not ls
+
+
+def justify_text(words, width):
+    """
+    Given a sequence of words and a page width, write an algorithm
+    to justify text
+    """
+
+    def _distribute_spaces(spaces, buckets):
+        per_bucket, rem = spaces // buckets, spaces % buckets
+        distribution = [per_bucket + 1] * buckets
+
+        idx = 0
+        while rem > 0:
+            distribution[idx] += 1
+            rem -= 1
+            idx += 1
+        return distribution
+
+    def _generate_line(ls, spaces):
+        res = []
+        for idx, word in enumerate(ls):
+            res.append(word)
+            if idx < len(spaces):
+                res.append(' ' * spaces[idx])
+        return ''.join(res)
+
+    lines = []
+    remaining_spaces = width - len(words[0])
+    # we have to initialize with a word to allow
+    # for easy handling of the space between words
+    cur_line = [words[0]]
+
+    for word in words[1:]:
+        if len(word) + 1 <= remaining_spaces:
+            remaining_spaces -= len(word) + 1
+            cur_line.append(word)
+        else:
+            spaces = _distribute_spaces(remaining_spaces, len(cur_line) - 1)
+            lines.append(_generate_line(cur_line, spaces))
+            cur_line = [word]
+            remaining_spaces = width - len(word)
+
+    # make sure we handle the end condition
+    spaces = _distribute_spaces(remaining_spaces, len(cur_line) - 1)
+    lines.append(_generate_line(cur_line, spaces))
+    return lines
