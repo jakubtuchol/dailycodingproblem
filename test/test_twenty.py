@@ -1,4 +1,5 @@
 from src.data_structures import ListNode
+from src.twenty import check_balanced_parens
 from src.twenty import construct_sentence
 from src.twenty import find_min_steps
 from src.twenty import get_min_rooms
@@ -132,3 +133,19 @@ class TestRemoveKthFromLast:
         root = ListNode.from_list(range(11))
         remove_kth_from_last(root, 1)
         assert root.compare_to_array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+
+class TestCheckBalancedParens:
+    """
+    Problem #27
+    """
+
+    def test_basic_case(self):
+        assert check_balanced_parens('([])[]({})')
+
+    def test_negative_cases(self):
+        assert not check_balanced_parens('([)]')
+        assert not check_balanced_parens('((()')
+
+    def test_edge_case(self):
+        assert not check_balanced_parens(')(')

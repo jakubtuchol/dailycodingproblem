@@ -20,11 +20,6 @@ Keeping up with the [Daily Coding Problem]()
       goal of minimizing cost while ensuring that no two neighboring houses are of the same color.
     * Given an N by K matrix where the nth row and kth column represents the cost to build the
       nth house with kth color, return the minimum cost which achieves this goal.
-* Problem #27
-    * Given a string of round, curly, and square open and closing brackets, return whether the brackets are
-      balanced (well-formed).
-    * For example, given the string `"([])[]({})"`, you should return `true`.
-    * Given the string `"([)]"` or `"((()"`, you should return false.
 * Problem #28
     * Write an algorithm to justify text. Given a sequence of words and an integer line length `k`, return a
       list of strings which represents each line, fully justified.

@@ -260,3 +260,28 @@ def remove_kth_from_last(ls, k):
         prev.next = cur.next
     else:
         prev.next = None
+
+
+def check_balanced_parens(parens):
+    """
+    Given that a string can be composed of parentheses, brackets,
+    and curly braces, check whether an input string has balanced
+    brackets.
+    """
+    matches = {
+        '}': '{',
+        ')': '(',
+        ']': '[',
+    }
+
+    ls = []
+
+    for paren in parens:
+        if paren in matches:
+            if not ls or ls[-1] != matches[paren]:
+                return False
+            ls.pop()
+        else:
+            ls.append(paren)
+
+    return not ls
