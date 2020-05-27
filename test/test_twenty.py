@@ -1,6 +1,8 @@
 from src.data_structures import ListNode
 from src.twenty import check_balanced_parens
 from src.twenty import construct_sentence
+from src.twenty import decode_word
+from src.twenty import encode_word
 from src.twenty import find_min_steps
 from src.twenty import get_min_rooms
 from src.twenty import justify_text
@@ -169,3 +171,27 @@ class TestJustifyText:
             'the   lazy   dog',
         ]
         assert expected == justify_text(words, 16)
+
+
+class TestRunLengthEncodingDecoding:
+    """
+    Problem #29
+    """
+
+    def test_run_length_encoding(self):
+        assert '4A3B2C1D2A' == encode_word('AAAABBBCCDAA')
+
+    def test_single_letter_encoding(self):
+        assert '1A' == encode_word('A')
+
+    def test_empty_string_encoding(self):
+        assert '' == encode_word('')
+
+    def test_run_length_decoding(self):
+        assert 'AAAABBBCCDAA' == decode_word('4A3B2C1D2A')
+
+    def test_single_letter_decoding(self):
+        assert 'A' == decode_word('1A')
+
+    def test_empty_string_decoding(self):
+        assert '' == decode_word('')

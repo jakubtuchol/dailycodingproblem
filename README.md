@@ -20,12 +20,6 @@ Keeping up with the [Daily Coding Problem]()
       goal of minimizing cost while ensuring that no two neighboring houses are of the same color.
     * Given an N by K matrix where the nth row and kth column represents the cost to build the
       nth house with kth color, return the minimum cost which achieves this goal.
-* Problem #29
-    * Run-length encoding is a fast and simple method of encoding strings. The basic idea is to represent repeated
-      successive characters as a single count and character. For example, the string `"AAAABBBCCDAA"` would be encoded
-      as `"4A3B2C1D2A"`.
-    * Implement run-length encoding and decoding. You can assume the string to be encoded have no digits and consists
-      solely of alphabetic characters. You can assume the string to be decoded is valid.
 * Problem #30
     * You are given an array of non-negative integers that represents a two-dimensional elevation map where each element
       is unit-width wall and the integer is the height. Suppose it will rain and all spots between two walls get filled up.

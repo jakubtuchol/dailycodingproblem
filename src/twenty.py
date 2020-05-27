@@ -332,3 +332,43 @@ def justify_text(words, width):
     spaces = _distribute_spaces(remaining_spaces, len(cur_line) - 1)
     lines.append(_generate_line(cur_line, spaces))
     return lines
+
+
+def encode_word(word):
+    """
+    Return the run-length encoding of a word
+    """
+
+    cur = ''
+    count = 0
+    res = []
+
+    for c in word:
+        if c != cur:
+            if cur:
+                res.extend([str(count), cur])
+            cur = c
+            count = 1
+        else:
+            count += 1
+
+    if cur:
+        res.extend([str(count), cur])
+
+    return ''.join(res)
+
+
+def decode_word(word):
+    """
+    Return the decoding of a run-length encoded string
+    """
+
+    idx = 0
+    res = []
+    while idx < len(word):
+        count = int(word[idx])
+        char = word[idx+1]
+        res.append(char * count)
+        idx += 2
+
+    return ''.join(res)
