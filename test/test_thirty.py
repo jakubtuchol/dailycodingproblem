@@ -1,4 +1,5 @@
 from src.thirty import edit_distance
+from src.thirty import make_palindrome
 
 
 class TestEditDistance:
@@ -19,3 +20,15 @@ class TestEditDistance:
 
     def test_none_in_common(self):
         assert 3 == edit_distance('abc', 'xyz')
+
+
+class TestMakePalindrome:
+    """
+    Problem #34
+    """
+
+    def test_provided_example(self):
+        assert 'ecarace' == make_palindrome('race')
+
+    def test_another_example(self):
+        assert 'elgoogle' == make_palindrome('google')
