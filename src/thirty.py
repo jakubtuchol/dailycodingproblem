@@ -67,20 +67,22 @@ def find_second_largest_node(root):
     Find the second-largest node in a binary search tree
     """
 
-    traversal = []
+    val = []
+    count = [0]
 
     def _inorder(node):
         # no element, return
-        if not node:
+        if not node or count[0] == 2:
             return
 
-        _inorder(node.left)
-        traversal.append(node)
         _inorder(node.right)
+
+        count[0] += 1
+        if count[0] == 2:
+            val.append(node)
+
+        _inorder(node.left)
 
     _inorder(root)
 
-    if len(traversal) < 2:
-        return None
-
-    return traversal[-2]
+    return val[0] if val else None
