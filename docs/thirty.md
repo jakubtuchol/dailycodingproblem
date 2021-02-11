@@ -45,3 +45,5 @@
     * Do this in linear time and in-place.
     * For example, given the array `['G', 'B', 'R', 'R', 'B', 'R', 'G']`, it should become
       `['R', 'R', 'R', 'G', 'G', 'B', 'B']`.
+* Problem #36 (Dropbox)
+    * Given the root to a binary search tree, find the second largest node in the tree.

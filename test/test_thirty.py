@@ -1,5 +1,7 @@
 from src.thirty import edit_distance
 from src.thirty import make_palindrome
+from src.thirty import find_second_largest_node
+from src.data_structures import BinaryNode
 
 
 class TestEditDistance:
@@ -32,3 +34,33 @@ class TestMakePalindrome:
 
     def test_another_example(self):
         assert 'elgoogle' == make_palindrome('google')
+
+
+class TestFindSecondLargestNode:
+    """
+    Problem #36
+    """
+
+    def test_on_left(self):
+        root = BinaryNode(5)
+        root.left = BinaryNode(3)
+
+        assert 3 == find_second_largest_node(root).val
+
+    def test_on_right(self):
+        root = BinaryNode(2)
+        root.right = BinaryNode(4)
+
+        assert 2 == find_second_largest_node(root).val
+
+    def test_balanced(self):
+        root = BinaryNode(2)
+        root.left = BinaryNode(1)
+        root.right = BinaryNode(3)
+
+        assert 2 == find_second_largest_node(root).val
+
+    def test_less_than_two_elements(self):
+        root = BinaryNode(2)
+
+        assert not find_second_largest_node(root)

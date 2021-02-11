@@ -60,3 +60,27 @@ def make_palindrome(s):
         return min(first, last)
 
     return min(first, last, key=len)
+
+
+def find_second_largest_node(root):
+    """
+    Find the second-largest node in a binary search tree
+    """
+
+    traversal = []
+
+    def _inorder(node):
+        # no element, return
+        if not node:
+            return
+
+        _inorder(node.left)
+        traversal.append(node)
+        _inorder(node.right)
+
+    _inorder(root)
+
+    if len(traversal) < 2:
+        return None
+
+    return traversal[-2]

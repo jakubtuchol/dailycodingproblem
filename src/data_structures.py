@@ -28,3 +28,14 @@ class ListNode:
             return True
 
         return self.next.compare_to_array(ls[1:])
+
+
+class BinaryNode:
+    """
+    Binary tree implementation
+    """
+
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
