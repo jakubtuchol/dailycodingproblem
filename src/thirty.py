@@ -86,3 +86,15 @@ def find_second_largest_node(root):
     _inorder(root)
 
     return val[0] if val else None
+
+
+def powerset(s):
+    """
+    Generate the powerset of a
+    """
+
+    new_s = [[]]
+    for elt in s:
+        new_s += [x + [elt] for x in new_s]
+
+    return new_s

@@ -20,10 +20,6 @@ Keeping up with the [Daily Coding Problem]()
       goal of minimizing cost while ensuring that no two neighboring houses are of the same color.
     * Given an N by K matrix where the nth row and kth column represents the cost to build the
       nth house with kth color, return the minimum cost which achieves this goal.
-* Problem #37
-    * The power set of a set is the set of all its subsets. Write a function that, given a set, generates its power set.
-    * For example, given the set `{1, 2, 3}`, it should return `{{}, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3}}`.
-    * You may also use a list or array to represent a set.
 * Problem #38
     * You have an N by N board. Write a function that, given N, returns the number of possible arrangements of the board
       where N queens can be placed on the board without threatening each other, i.e. no two queens share the same row,

@@ -1,6 +1,7 @@
 from src.thirty import edit_distance
-from src.thirty import make_palindrome
 from src.thirty import find_second_largest_node
+from src.thirty import make_palindrome
+from src.thirty import powerset
 from src.data_structures import BinaryNode
 
 
@@ -64,3 +65,26 @@ class TestFindSecondLargestNode:
         root = BinaryNode(2)
 
         assert not find_second_largest_node(root)
+
+
+class TestPowerset:
+    """
+    Problem #37
+    """
+
+    def test_three(self):
+        expected_set = [
+            [],
+            [1], [2], [3],
+            [1, 2], [1, 3], [2, 3],
+            [1, 2, 3],
+        ]
+
+        calculated_set = powerset([1, 2, 3])
+        assert len(calculated_set) == len(expected_set)
+
+        for elt in calculated_set:
+            assert elt in expected_set
+
+    def test_empty(self):
+        assert [[]] == powerset([])
